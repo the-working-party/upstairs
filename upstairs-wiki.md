@@ -1,6 +1,29 @@
 #Upstairs
 
 
+##Notes
+
+- Logo - interior arches or windows sillhouette
+- https://www.storyandheart.com/
+- Find us on Twitter / LinkedIn
+- Link to The Working Party website
+- Call Cal
+- enquiry form
+
+## Cool Sites
+
+- [http://www.spaceandco.com.au/]()
+- [http://theworkben.ch/]()
+- [http://collinscollective.com.au/]()
+- [http://www.yourdesk.com.au/]()
+
+
+
+
+
+##Content
+
+
 ## About
 
 Intro Paragraph - **We're a coworking space in the heart of Chinatown, Sydney.** etc...
