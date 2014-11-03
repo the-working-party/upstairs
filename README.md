@@ -1,4 +1,4 @@
-upstairs
+Upstairs — Co–working at 392 Sussex St Sydney
 ========
 
 **Site map**
