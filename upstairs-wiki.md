@@ -16,13 +16,9 @@
 - [http://theworkben.ch/]()
 - [http://collinscollective.com.au/]()
 - [http://www.yourdesk.com.au/]()
-
-
-
-
+- [http://www.betahaus.com/](Betahaus)
 
 ##Content
-
 
 ## About
 
