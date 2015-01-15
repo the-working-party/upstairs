@@ -86,6 +86,47 @@
 			padding: 0 1em;
 		}
 
+/*Membership*/
+
+.membership ul {
+	padding-left: 0;
+}
+
+.membership ul li{
+	list-style-type: none;
+	box-sizing: border-box;
+	height: 250px;
+	padding: 1em;
+	width: 50%;
+	float: left;
+	border: 2px solid #483B2C;
+}
+
+
+/*Lunch*/
+.lunch h3 {
+	text-align: left;
+}
+.lunch ol li {
+	list-style-type: none;
+}
+
+.lunch .cuisine {
+	width: 50%;
+	float: left;
+	box-sizing: border-box;
+}
+
+/*CTA*/
+
+.cta form, .cta .form-field, .cta .form-field input, .cta .form-field textarea {
+	width: 100%;
+}
+
+.cta .form-field textarea {
+	height: 150px;
+}
+
 
 /*Footer */
 
