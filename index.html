@@ -5,97 +5,9 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Old+Standard:400/Source+Sans+Pro:400">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		/*
-		Colours:
-		Grey: #483B2C
-
-		 */
-		html,
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		html {
-			background: #FAECD8;
-			text-align: center;
-			font-family: Source Sans Pro;
-			font-weight: 400;
-			color: #483B2C;
-			line-height: 1.4;
-		}
-		* + * {
-			margin-top: 1.5em;
-		}
-		li + * {
-			margin-top: 0;
-		}
-		[role="banner"] {
-			background: url(pano.jpg) center no-repeat;
-			background-size: cover;
-			height: 70vh;
-			text-align: center;
-			border-bottom: 1vh solid #483B2C;
-			display: flex;
-			color: #483B2C;
-			font-family: Old Standard, serif;
-		}
-		h2, h3 {
-			font-family: Old Standard, serif;
-			font-weight: normal;
-			text-align: center;
-		}
-		h2 {
-			font-size: 2.2em;
-		}
-		h3 {
-			font-size: 1.6em;
-		}
-		p, li {
-			font-size: 1.2em;
-		}
-		a {
-			color: #000;
-			transition: .2s background;
-		}
-		a:hover,
-		a:focus {
-			background: rgba(255,255,255,.5);
-		}
-		.site-name-wrapper {
-			flex: 1;
-			align-self: center;
-		}
-		.site-name {
-			margin-top: 0;
-		}
-		.site-name-strap {
-			text-align: center;
-			font-size: 2.6em;
-			display: inline-block;
-			border: .5vh solid;
-			margin: 5vh 1vh;
-			padding: 2vh;
-			line-height: 1;
-		}
-		.site-name a {
-			color: #FAECD8;
-			text-decoration: none;
-			display: block;
-		}
-		[itemprop="logo"] {
-			width: 25vmin;
-			max-width: 35em;
-		}
-		section {
-			max-width: 35em;
-			margin: 2em auto;
-			text-align: left;
-			padding: 0 1em;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
-	<script> 
+	<script>
 		google.maps.event.addDomListener(window, 'load', init);
 		var map;
 		function init() {
@@ -120,22 +32,24 @@
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				styles: [  { 'featureType': 'water', 'stylers': [{ 'visibility': 'on' },{ 'color': '#acbcc9' } ]  },{ 'featureType': 'landscape', 'stylers': [{ 'color': '#f2e5d4' } ]  },{ 'featureType': 'road.highway', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5c6c6' } ]  },{ 'featureType': 'road.arterial', 'elementType': 'geometry', 'stylers': [{ 'color': '#e4d7c6' } ]  },{ 'featureType': 'road.local', 'elementType': 'geometry', 'stylers': [{ 'color': '#fbfaf7' } ]  },{ 'featureType': 'poi.park', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5dac6' } ]  },{ 'featureType': 'administrative', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 33 } ]  },{ 'featureType': 'road'  },{ 'featureType': 'poi.park', 'elementType': 'labels', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 20 } ]  },{  },{ 'featureType': 'road', 'stylers': [{ 'lightness': 20 } ]  }],
 			}
+
+			var infowindow = new google.maps.InfoWindow();
 			var mapElement = document.getElementById('map-canvas');
 			var map = new google.maps.Map(mapElement, mapOptions);
 			var locations = [
-	['Upstairs', 'A co–working space in Sydney', '+61404 449464', 'cal@theworkingparty.com.au', 'http://workupstairs.com.au', -33.877379, 151.204796, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],
-	['Mamak', 'Malaysian', '', '', '', -33.877722, 151.204221, 'https://mapbuildr.com/assets/img/markers/solid-pin-purple.png'],
-	['Saap Thai', '', '', '', '', -33.877605, 151.207865, 'https://mapbuildr.com/assets/img/markers/solid-pin-purple.png'],
-	['Ramen Zundo', '', '', '', '', -33.876941, 151.206994, 'https://mapbuildr.com/assets/img/markers/solid-pin-purple.png'],
-	['Spring River', '', '', '', '', -33.880514, 151.204149, 'https://mapbuildr.com/assets/img/markers/solid-pin-purple.png'],
-
+				['Upstairs', 'A co–working space in Sydney', '+61404 449464', 'cal@theworkingparty.com.au', 'http://workupstairs.com.au', -33.877379, 151.204796, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],
+				['Mamak', 'Malaysian', '', '', '', -33.877722, 151.204221, 'chopsticks.png'],
+				['Saap Thai', '', '', '', '', -33.877605, 151.207865, 'chopsticks.png'],
+				['Ramen Zundo', '', '', '', '', -33.876941, 151.206994, 'chopsticks.png'],
+				['Spring River', '', '', '', '', -33.880514, 151.204149, 'chopsticks.png'],
 			];
+
 			for (i = 0; i < locations.length; i++) {
 				if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
 				if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
 				if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
-			   if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
-			   if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
+				if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
+				if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
 				marker = new google.maps.Marker({
 					icon: markericon,
 					position: new google.maps.LatLng(locations[i][5], locations[i][6]),
@@ -146,7 +60,40 @@
 					email: email,
 					web: web
 				});
-	link = '';     }
+				if (web.substring(0, 7) != "http://") {
+					link = "http://" + web;
+				} else {
+					link = web;
+				}
+
+				bindInfoWindow(marker, map, locations[i][0], description, telephone, email, web, link);
+			}
+			function bindInfoWindow(marker, map, title, desc, telephone, email, web, link) {
+				var infoWindowVisible = (function () {
+					var currentlyVisible = false;
+					return function (visible) {
+						if (visible !== undefined) {
+							currentlyVisible = visible;
+						}
+						return currentlyVisible;
+					};
+				}());
+				iw = new google.maps.InfoWindow();
+				google.maps.event.addListener(marker, 'click', function() {
+					if (infoWindowVisible()) {
+						iw.close();
+						infoWindowVisible(false);
+					} else {
+						var html= "<div style='color:#000;background-color:#fff;padding:5px;width:150px;'><h4>"+title+"</h4><p>"+desc+"<p><a href='"+link+"'' >"+web+"<a></div>";
+						iw = new google.maps.InfoWindow({content:html});
+						iw.open(map,marker);
+						infoWindowVisible(true);
+					}
+				});
+				google.maps.event.addListener(iw, 'closeclick', function () {
+					infoWindowVisible(false);
+				});
+			}
 
 	}
 	</script>
@@ -206,6 +153,11 @@
 		<p>Upstairs was set up by <a href="http://theworkingparty.com.au">The Working Party</a> as our headquarters and as a shared workspace for other like–minded creative–types and businesses. Currently we are sharing with a graphic designer, two digital agencies and a business consultant.</p>
 		<p>The environment here is really friendly and welcoming. We often all leave the office together for lunch (or a drink!), share work or links, or advice. We have a shared stereo with a record player and an AppleTV for connecting iTunes.</p>
 	</section>
+
+	<section>
+
+	</section>
+
 	<section>
 		<h2>Location</h2>
 		<p>Level 3
@@ -213,12 +165,25 @@
 		<br>Sydney NSW 2000</p>
 	</section>
 
-	<div id="map-canvas">
-		
-	</div>
+
+	<section class="lunch">
+		<h2>The Lunch Party</h2>
+
+		<ul>
+			<li>Mamak</li>
+			<li>Saap Thai</li>
+			<li></li>
+			<li></li>
+		</ul>
+
+	</section>
+
+	<div id="map-canvas"></div>
 
 	<footer>
-		Some footer 
+		<div class="footer-logo">
+			<img itemprop="logo" src="logo.png" alt="Upstairs — a co–working space in Sydney"/>
+		</div>
 	</footer>
 
 
