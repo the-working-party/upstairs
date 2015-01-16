@@ -38,11 +38,12 @@
 			var mapElement = document.getElementById('map-canvas');
 			var map = new google.maps.Map(mapElement, mapOptions);
 			var locations = [
-				['Upstairs', 'A co–working space in Sydney', '+61404 449464', 'cal@theworkingparty.com.au', 'http://workupstairs.com.au', -33.877379, 151.204796, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],
+				['Upstairs', 'A co–working space in Sydney', '+61404 449464', 'cal@theworkingparty.com.au', 'http://workupstairs.com.au', -33.877379, 151.204796, 'pin-black.png'],
 				['Mamak', 'Malaysian', '', '', '', -33.877722, 151.204221, 'chopsticks.png'],
-				['Saap Thai', '', '', '', '', -33.877605, 151.207865, 'chopsticks.png'],
-				['Ramen Zundo', '', '', '', '', -33.876941, 151.206994, 'chopsticks.png'],
-				['Spring River', '', '', '', '', -33.880514, 151.204149, 'chopsticks.png'],
+				['Saap Thai', 'Excellent fried rice and Stir-fry', '', '', '', -33.877605, 151.207865, 'chopsticks.png'],
+				['Ramen Zundo', 'Some of the best Ramen in town', '', '', '', -33.876941, 151.206994, 'chopsticks.png'],
+				['Spring River', 'Authentic Chinese Food', '', '', '', -33.880514, 151.204149, 'chopsticks.png'],
+				['Pho TK', 'Authentic Vietnamese Food', '', '', '', -33.879955, 151.203006, 'chopsticks.png'],
 			];
 
 			for (i = 0; i < locations.length; i++) {
@@ -156,31 +157,29 @@
 	</section>
 
 	<section class="membership">
-		<h2>Membership</h2>
+		<h2>Rates</h2>
 
 		<ul class="membership-table">
 			<li>
-				<h3>Casual</h3>
-				<p>Pay <span class="js-days-price">--</span> per week</p>
+				<h3>Weekly</h3>
 
-				<label for="days-per-week">Days per Week</label>
-				<select class="days-per-week">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>
+				<div class="membership-content">
+					<p>$100</p>
+					<p>Some more content?</p>
+				</div>
 			</li>
 			<li>
-				<h3>Full Time</h3>
-				<p>Pay per week</p>
+				<h3>Monthly</h3>
+				<div class="membership-content">
+					<p>$400</p>
+					<p>Some info?</p>
+				</div>
 			</li>
 		</ul>
 
 	</section>
 
-	<section>
+	<section class="location">
 		<h2>Location</h2>
 		<p>Level 3
 		<br>392 Sussex St
@@ -189,6 +188,17 @@
 
 
 	<section class="cta">
+		<h2>Contact Us</h2>
+
+		<dl>
+			<dt>Email:</dt>
+			<dd><a href="mailto:cal@theworkingparty.com.au">cal@theworkingparty.com.au</a></dd>
+			<dt>Phone:</dt>
+			<dd<a href="tel:+61404 449464">0404 449464</a></dd>
+			<dt>Twitter:</dt>
+			<dd><a href="https://twitter.com/workupstairs">twitter.com/workupstairs</a></dd>
+		</dl>
+
 		<form>
 			<div class="form-field">
 				<label class="sr-only">Name</label>
@@ -203,67 +213,57 @@
 				<textarea placeholder="Message"></textarea>
 			</div>
 			<div class="buttons">
-				<input type="submit" value="SEND FORM" />
-				OR
-				<a href="mailto:cal@theworkingparty.co.au">Send an Email the normal way</a>
+				<input type="submit" class="send-form-btn" value="SEND FORM" />
+				<a href="mailto:cal@theworkingparty.co.au">or Send an Email</a>
 			</div>
 		</form>
 	</section>
 
-
+	<div id="map-canvas"></div>
 
 	<section class="lunch">
 		<h2>The Lunch Party</h2>
 
-
 		<div class="cuisine">
 			<h3>Chinese</h3>
 			<ol>
-				<li>Spring River</li>
+				<li><a href="">Spring River</a></li>
 			</ol>
 		</div>
 		<div class="cuisine">
 			<h3>Thai</h3>
 			<ol>
-				<li>Saap Thai</li>
+				<li><a href="">Saap Thai</a></li>
 			</ol>
 		</div>
 
 		<div class="cuisine">
 			<h3>Vietnamese</h3>
 			<ol>
-
+				<li><a href="">Pho TK</a></li>
 			</ol>
 		</div>
 		<div class="cuisine">
 			<h3>Malaysian</h3>
 			<ol>
-
+				<li><a href="">Mamak</a></li>
 			</ol>
 		</div>
 		<div class="cuisine">
 			<h3>Japanese</h3>
 			<ol>
-				<li>Ramen Zundo</li>
-				<li>Miso World Square</li>
+				<li><a href="">Ramen Zundo</a></li>
+				<li><a href="">Miso World Square</a></li>
 			</ol>
 		</div>
 		<div class="cuisine">
-			<h3>Unknown but tasty</h3>
+			<h3>Random</h3>
 			<ol>
-
-			</ol>
-		</div>
-		<div class="cuisine">
-			<h3>Non-Asian (huh?)</h3>
-			<ol>
-
+			<li><a href="">Emperor Puffs</a></li>
 			</ol>
 		</div>
 
 	</section>
-
-	<div id="map-canvas"></div>
 
 	<footer>
 		<div class="footer-logo">

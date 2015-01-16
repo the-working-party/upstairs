@@ -101,6 +101,18 @@
 
 /*Membership*/
 
+.membership {
+	overflow: hidden;
+}
+
+.membership-table h3 {
+	background: #483B2C;
+	color: #FAECD8;
+	margin: 0;
+	padding: 0.4em 0;
+	font-family: Source Sans Pro;
+}
+
 .membership ul {
 	padding-left: 0;
 }
@@ -109,37 +121,93 @@
 	list-style-type: none;
 	box-sizing: border-box;
 	height: 250px;
-	padding: 1em;
-	width: 50%;
+	padding-bottom: 1em;
+	width: 45%;
 	float: left;
 	border: 2px solid #483B2C;
+}
+.membership ul li+li {
+	float: right;
+}
+
+.membership ul li .membership-content {
+	text-align: center;
+	padding: 1em;
+	margin-top: 0;
 }
 
 
 /*Lunch*/
+
+.lunch {
+	overflow: hidden;
+}
+
 .lunch h3 {
 	text-align: left;
+}
+.lunch ol {
+	padding-left: 0;
 }
 .lunch ol li {
 	list-style-type: none;
 }
 
 .lunch .cuisine {
-	width: 50%;
+	width: 33%;
 	float: left;
 	box-sizing: border-box;
 }
 
 /*CTA*/
 
-.cta form, .cta .form-field, .cta .form-field input, .cta .form-field textarea {
+.cta form, .cta .form-field {
 	width: 100%;
+}
+
+.cta .form-field input, .cta .form-field textarea {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 2px solid #483B2C;
+	font-size: 1em;
+	font-family: Source Sans Pro;
+}
+
+.cta .form-field input {
+	height: 50px;
+	margin-top: 0;
 }
 
 .cta .form-field textarea {
 	height: 150px;
+	border: 2px solid #483B2C;
+	margin-top: 0;
 }
 
+.buttons {
+	text-align: center;
+}
+
+.send-form-btn {
+	width: 40%;
+	padding: 10px;
+	font-size: 1.2em;
+	font-family: Source Sans Pro;
+	background: #FAECD8;
+	border: 3px solid #483B2C;
+	color: #483B2C;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.send-form-btn:hover {
+	background: #483B2C;
+	color: #FAECD8;
+}
 
 /*Footer */
 
