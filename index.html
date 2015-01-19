@@ -9,8 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script>
-		google.maps.event.addDomListener(window, 'load', init);
-		var map;
+		
+
+		/*
 		function init() {
 			var mapOptions = {
 				center: new google.maps.LatLng(-33.877158, 151.204668),
@@ -31,7 +32,9 @@
 					opened: false,
 				},
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				styles: [  { 'featureType': 'water', 'stylers': [{ 'visibility': 'on' },{ 'color': '#acbcc9' } ]  },{ 'featureType': 'landscape', 'stylers': [{ 'color': '#f2e5d4' } ]  },{ 'featureType': 'road.highway', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5c6c6' } ]  },{ 'featureType': 'road.arterial', 'elementType': 'geometry', 'stylers': [{ 'color': '#e4d7c6' } ]  },{ 'featureType': 'road.local', 'elementType': 'geometry', 'stylers': [{ 'color': '#fbfaf7' } ]  },{ 'featureType': 'poi.park', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5dac6' } ]  },{ 'featureType': 'administrative', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 33 } ]  },{ 'featureType': 'road'  },{ 'featureType': 'poi.park', 'elementType': 'labels', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 20 } ]  },{  },{ 'featureType': 'road', 'stylers': [{ 'lightness': 20 } ]  }],
+				styles: [  { 'featureType': 'water', 'stylers': [{ 'visibility': 'on' },{ 'color': '#acbcc9' } ]  },{ 'featureType': 'landscape', 'stylers': [{ 'color': '#f2e5d4' } ]  },{ 'featureType': 'road.highway', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5c6c6' } ]  },{ 'featureType': 'road.arterial', 'elementType': 'geometry', 'stylers': [{ 'color': '#e4d7c6' } ]  },{ 'featureType': 'road.local', 'elementType': 'geometry', 'stylers': [{ 'color': '#fbfaf7' } ]  },{ 'featureType': 'poi.park', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5dac6' } ]  },{ 'featureType': 'administrative', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 33 } ]  },{ 'featureType': 'road'  },{ 'featureType': 'poi.park', 'elementType': 'labels', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 20 } ]  },{  },{ 'featureType': 'road', 'stylers': [{ 'lightness': 20 } ]  },
+					{ 'featureType' : 'poi', 'stylers' : [ { visibility: 'off' } ] } 
+				]
 			}
 
 			var infowindow = new google.maps.InfoWindow();
@@ -40,7 +43,7 @@
 			var locations = [
 				['Upstairs', 'A co–working space in Sydney', '+61404 449464', 'cal@theworkingparty.com.au', 'http://workupstairs.com.au', -33.877379, 151.204796, 'pin-black.png'],
 				['Mamak', 'Malaysian', '', '', '', -33.877722, 151.204221, 'chopsticks.png'],
-				['Saap Thai', 'Excellent fried rice and Stir-fry', '', '', '', -33.877605, 151.207865, 'chopsticks.png'],
+				['Saap Thai', 'Excellent fried rice and Stir-fry', '', '', '', -33.877619, 151.207798, 'chopsticks.png'],
 				['Ramen Zundo', 'Some of the best Ramen in town', '', '', '', -33.876941, 151.206994, 'chopsticks.png'],
 				['Spring River', 'Authentic Chinese Food', '', '', '', -33.880514, 151.204149, 'chopsticks.png'],
 				['Pho TK', 'Authentic Vietnamese Food', '', '', '', -33.879955, 151.203006, 'chopsticks.png'],
@@ -51,24 +54,47 @@
 				if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
 				if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
 				if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
-				if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
+				if (locations[i][7] =='undefined'){ markericon ='';} else { 
+					markericon = { 
+						url: locations[i][7],
+						size: new google.maps.Size(32, 32),
+    					origin: new google.maps.Point(0,0),
+    					anchor: new google.maps.Point(5, 32),
+    					zIndex: i
+					} ;
+				}
+
+				var shape = {
+			      coords: [0, 0, 32, 32],
+			      type: 'rect'
+			  	};
+
 				marker = new google.maps.Marker({
 					icon: markericon,
+					shape: shape,
 					position: new google.maps.LatLng(locations[i][5], locations[i][6]),
 					map: map,
+					clickable: true,
 					title: locations[i][0],
 					desc: description,
 					tel: telephone,
 					email: email,
 					web: web
 				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+					console.log( 'clicked' ) ;
+				    infowindow.open(map,marker);
+				  });
+
 				if (web.substring(0, 7) != "http://") {
 					link = "http://" + web;
 				} else {
 					link = web;
 				}
 
-				bindInfoWindow(marker, map, locations[i][0], description, telephone, email, web, link);
+				//bindInfoWindow(marker, map, locations[i][0], description, telephone, email, web, link);
+				
 			}
 			function bindInfoWindow(marker, map, title, desc, telephone, email, web, link) {
 				var infoWindowVisible = (function () {
@@ -98,10 +124,23 @@
 			}
 
 	}
-	</script>
+
+	*/
+
+</script>
+
+
+	 
+
+
 <style>
+
+	#map-wrapper {
+		height: 400px;
+	}
+
 	#map-canvas {
-		height:440px;
+		height:100%;
 		width:100%;
 		margin: 2em 0;
 		border-bottom: 1vh solid #483B2C;
@@ -119,6 +158,8 @@
 		color: #4272db;
 	}
 </style>
+
+
 </head>
 <body>
 	<header role="banner">
@@ -219,7 +260,9 @@
 		</form>
 	</section>
 
-	<div id="map-canvas"></div>
+	<div id="map-wrapper">
+		<div id="map-canvas"></div>
+	</div>
 
 	<section class="lunch">
 		<h2>The Lunch Party</h2>
@@ -281,6 +324,85 @@
   ga('send', 'pageview');
 
 </script>
+
+<script>
+
+function init( ) {
+
+        var map;
+        var bounds = new google.maps.LatLngBounds();
+        var mapOptions = {
+            mapTypeId: 'roadmap',
+            center: new google.maps.LatLng(-33.877158, 151.204668),
+            zoom: 17,
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.DEFAULT,
+            },
+            styles: [  { 'featureType': 'water', 'stylers': [{ 'visibility': 'on' },{ 'color': '#acbcc9' } ]  },
+                { 'featureType': 'landscape', 'stylers': [{ 'color': '#f2e5d4' } ]  },
+                { 'featureType': 'road.highway', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5c6c6' } ]  },
+                { 'featureType': 'road.arterial', 'elementType': 'geometry', 'stylers': [{ 'color': '#e4d7c6' } ]  },
+                { 'featureType': 'road.local', 'elementType': 'geometry', 'stylers': [{ 'color': '#fbfaf7' } ]  },
+                { 'featureType': 'poi.park', 'elementType': 'geometry', 'stylers': [{ 'color': '#c5dac6' } ]  },
+                { 'featureType': 'administrative', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 33 } ]  },
+                { 'featureType': 'road' },
+                { 'featureType': 'poi.park', 'elementType': 'labels', 'stylers': [{ 'visibility': 'on' },{ 'lightness': 20 } ] },{  },
+                { 'featureType': 'poi.business', 'stylers': [{ 'visibility': 'off' }] },
+                { 'featureType': 'road', 'stylers': [{ 'lightness': 20 } ] }]
+        };
+
+        
+
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        var markers = [
+            ['Upstairs', 'A co-working space in Sydney', '+61404 449464', 'cal@theworkingparty.com.au', 'http://workupstairs.com.au', -33.877379, 151.204796, 'pin-black.png'],
+            ['Mamak', 'Malaysian', '', '', '', -33.877722, 151.204221, 'chopsticks.png'],
+            ['Saap Thai', 'Excellent fried rice and Stir-fry', '', '', '', -33.877605, 151.207865, 'chopsticks.png'],
+            ['Ramen Zundo', 'Some of the best Ramen in town', '', '', '', -33.876941, 151.206994, 'chopsticks.png'],
+            ['Spring River', 'Authentic Chinese Food', '', '', '', -33.880514, 151.204149, 'chopsticks.png'],
+            ['Pho TK', 'Authentic Vietnamese Food', '', '', '', -33.879955, 151.203006, 'chopsticks.png']
+        ];
+
+        
+
+        var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+        for( i = 0; i < markers.length; i++ ) {
+            var position = new google.maps.LatLng(markers[i][5], markers[i][6]);
+            bounds.extend(position);
+
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: markers[i][0],
+                icon: markers[i][7]
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infoWindow.setContent( '<div class="info_content"><h3>' + markers[i][0] + '</h3>' +
+                    '<p>' + markers[i][1] + '</p></div>');
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
+
+            map.fitBounds(bounds);
+
+        }
+
+		
+
+    }
+
+
+    google.maps.event.addDomListener(window, 'load', init);
+
+
+
+
+	</script>
 </body>
 
 
