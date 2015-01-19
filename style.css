@@ -3,6 +3,8 @@
 		Grey: #483B2C
 
 		 */
+
+		 
 		html,
 		body {
 			margin: 0;
@@ -16,12 +18,17 @@
 			color: #483B2C;
 			line-height: 1.4;
 		}
+
+		/*
 		* + * {
 			margin-top: 1.5em;
 		}
 		li + * {
 			margin-top: 0;
 		}
+		*/
+
+
 		[role="banner"] {
 			background: url(pano.jpg) center no-repeat;
 			background-size: cover;
@@ -32,6 +39,11 @@
 			color: #483B2C;
 			font-family: Old Standard, serif;
 		}
+
+		.form-field {
+			margin-bottom: 20px;
+		}
+		
 		h2, h3 {
 			font-family: Old Standard, serif;
 			font-weight: normal;
@@ -54,6 +66,8 @@
 		a:focus {
 			background: rgba(255,255,255,.5);
 		}
+
+
 		.site-name-wrapper {
 			flex: 1;
 			align-self: center;
