@@ -4,7 +4,7 @@
 
 		 */
 
-		 
+
 		html,
 		body {
 			margin: 0;
@@ -45,7 +45,7 @@
 		.form-field {
 			margin-bottom: 20px;
 		}
-		
+
 		h2, h3 {
 			font-family: Europa, serif;
 			font-weight: normal;
@@ -309,3 +309,27 @@ footer {
 
 }
 
+#map-wrapper {
+			height: 400px;
+			position: relative;
+		}
+
+		#map-canvas {
+			height:100%;
+			width:100%;
+			margin: 2em 0;
+			border-bottom: 1vh solid #483B2C;
+			border-top: 1vh solid #483B2C;
+			z-index: 100;
+		}
+		.gm-style-iw * {
+			display: block;
+			width: 100%;
+		}
+		.gm-style-iw h4, .gm-style-iw p {
+			margin: 0;
+			padding: 0;
+		}
+		.gm-style-iw a {
+			color: #4272db;
+		}
