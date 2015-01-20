@@ -181,6 +181,64 @@
 	box-sizing: border-box;
 }
 
+.recommendations-container {
+	position: absolute;
+	left: 0px;
+	top: 11px;
+	padding: 0 20px 0 40px;
+	background: rgba( 255, 255, 255, .8 ) ;
+	z-index: 999;
+	width: 270px;
+	height: 400px;
+	max-height: 400px;
+	overflow-y: scroll;
+	display: none;
+	font-family: sans-serif;
+}
+
+.recommendations-container .btn-close {
+	position: absolute;
+	top: 20px;
+	right: 25px;
+	text-decoration: none;
+	background: #ccc;
+	height: 30px;
+	width: 30px;
+	font-size: 1em;
+	line-height: 30px;
+	border-radius: 15px;
+}
+
+.recommendations-container h3, .recommendations h4 {
+	text-align: left;
+}
+
+.recommendations-container h3 {
+	margin: 15px 0 10px 0;
+}
+
+.recommendations-container h4 {
+	margin: 10px 0 0 0;
+}
+
+.recommendations {
+	display: none;
+}
+
+.recommendations ol {
+	margin-top: 0;
+}
+
+.recommendations ol li {
+	font-size: 1em;
+	text-align: left;
+}
+
+.recommendations-container.visible, .recommendations.visible {
+	display: block;
+}
+
+
 /*CTA*/
 
 .cta form, .cta .form-field {
@@ -240,5 +298,14 @@ footer {
 .footer-logo img {
 	width: 12vmin;
 	max-width: 17em;
+}
+
+
+@media screen and ( max-width: 767px ) {
+
+	.recommendations-container {
+		display: none !important;
+	}
+
 }
 

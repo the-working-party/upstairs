@@ -19,6 +19,7 @@
 
 		#map-wrapper {
 			height: 400px;
+			position: relative;
 		}
 
 		#map-canvas {
@@ -27,6 +28,7 @@
 			margin: 2em 0;
 			border-bottom: 1vh solid #483B2C;
 			border-top: 1vh solid #483B2C;
+			z-index: 100;
 		}
 		.gm-style-iw * {
 			display: block;
@@ -125,6 +127,65 @@
 	</section>
 
 	<div id="map-wrapper">
+		<div class="recommendations-container">
+			<a class="btn-close" href="#">x</a>
+			<h3>Recommendations</h3>
+
+			<div class="recommendations" data-link-index="1">
+				<h4>Mamak</h4>
+				<ol>
+					<li>Nasi Lemak</li>
+					<li>Ayan Berempah</li>
+				</ol>
+			</div>
+
+			<div class="recommendations" data-link-index="2">
+				<h4>Saap Thai</h4>
+				<ol>
+					<li>Salted Fish Fried Rice</li>
+					<li>Sour Pork</li>
+					<li>Pork Belly & Peppercorn</li>
+				</ol>
+			</div>
+
+			<div class="recommendations" data-link-index="3">
+				<h4>Ramen Zundo</h4>
+				<ol>
+					<li>Tokyo Soy</li>
+					<li>Nibashi</li>
+				</ol>
+			</div>
+
+			<div class="recommendations" data-link-index="4">
+				<h4>Spring River</h4>
+				<ol>
+					<li>Dumplings</li>
+					<li>Yu Xiang Pork</li>
+				</ol>
+			</div>
+
+			<div class="recommendations" data-link-index="5">
+				<h4>Pho TK</h4>
+				<ol>
+					<li>Special Vermicelli</li>
+					<li>Rare Beef & Flank Noodle Soup</li>
+				</ol>
+			</div>
+
+			<div class="recommendations" data-link-index="6">
+				<h4>Miso World Square</h4>
+				<ol>
+					<li>Everything</li>
+				</ol>
+			</div>
+
+			<div class="recommendations" data-link-index="7">
+				<h4>Emperor Puffs</h4>
+				<ol>
+					<li>Custard Balls</li>
+				</ol>
+			</div>
+		</div>
 		<div id="map-canvas"></div>
 	</div>
 
@@ -257,11 +318,13 @@
 
             markers[i] = marker ;
 
-            google.maps.event.addListener(marker, 'click', ( function( marker, i ) {
+            google.maps.event.addListener( marker, 'click', ( function( marker, i ) {
                 return function( ) {
                     infoWindow.setContent( '<div class="info_content"><h3>' + marker_data[i][0] + '</h3>' +
                     '<p>' + marker_data[i][1] + '</p></div>' ) ;
                     infoWindow.open( map, marker ) ;
+
+                    highlightLocations( [ marker_data[i][8] ] ) ;
                 }
             } )( marker, i ) ) ;
 
@@ -277,14 +340,23 @@
     function highlightLocations( arr ) {
 
     	for( var i = 1 ; i < markers.length ; i++ ) {
-    		if( arr.indexOf( marker_data[i][8] ) == -1 ) {
+    		var index = marker_data[i][8] ;
+    		var reco = $( '.recommendations[data-link-index="' + index + '"]' ) ;
+
+    		if( arr.indexOf( index ) == -1 ) {
     			markers[i].setIcon( 'chopsticks.png' ) ;
+    			reco.removeClass( 'visible' ) ;
     		}
 
     		else {
     			markers[i].setIcon( 'chopsticks_highlight.png' ) ;
+    			reco.addClass( 'visible' ) ;
     		}
     	}
+
+    	if( $( '.recommendations' ).find( '.visible' ) ) $( '.recommendations-container' ).addClass( 'visible' ) ;
+    	else $( '.recommendations-container' ).removeClass( 'visible' ) ;
+
     }
 
 
@@ -308,6 +380,12 @@
 	    	
 	    	highlightLocations( arr ) ;
 	    } ) ;
+
+
+	    $( '.recommendations-container .btn-close' ).on( 'click', function( e ) {
+	    	e.preventDefault( ) ;
+	    	$( '.recommendations-container' ).removeClass( 'visible' ) ;
+	    } ) ; 
 
     } ) ;
 
