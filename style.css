@@ -47,7 +47,7 @@
 		}
 		
 		h2, h3 {
-			font-family: Old Standard, serif;
+			font-family: Europa, serif;
 			font-weight: normal;
 			text-align: center;
 		}
@@ -140,7 +140,7 @@
 .membership ul li{
 	list-style-type: none;
 	box-sizing: border-box;
-	height: 250px;
+	height: 190px;
 	padding-bottom: 1em;
 	width: 45%;
 	float: left;
@@ -165,9 +165,11 @@
 
 .lunch h3 {
 	text-align: left;
+	margin-bottom: 5px;
 }
 .lunch ol {
 	padding-left: 0;
+	margin-top: 0;
 }
 .lunch ol li {
 	list-style-type: none;
