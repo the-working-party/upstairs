@@ -140,8 +140,6 @@
 .membership ul li{
 	list-style-type: none;
 	box-sizing: border-box;
-	height: 190px;
-	padding-bottom: 1em;
 	width: 45%;
 	float: left;
 	border: 2px solid #483B2C;
@@ -152,8 +150,12 @@
 
 .membership ul li .membership-content {
 	text-align: center;
-	padding: 1em;
 	margin-top: 0;
+	padding: 0.4em 0;
+}
+
+.membership ul li .membership-content p {
+	margin: 10px;
 }
 
 
@@ -179,6 +181,12 @@
 	width: 33%;
 	float: left;
 	box-sizing: border-box;
+}
+
+@media all and (max-width: 700px) {
+	.lunch .cuisine {
+		width: 50%;
+	}
 }
 
 .recommendations-container {
@@ -265,6 +273,20 @@
 	margin-top: 0;
 }
 
+.cta dl dt {
+	float: left;
+	width: 30%;
+}
+
+.cta dl dd {
+	float: left;
+	width: 60%;
+}
+
+.cta dl {
+	overflow: hidden;
+}
+
 .buttons {
 	text-align: center;
 }
@@ -287,6 +309,13 @@
 .send-form-btn:hover {
 	background: #483B2C;
 	color: #FAECD8;
+}
+
+
+/*Location*/
+
+.location {
+	text-align: center;
 }
 
 /*Footer */
