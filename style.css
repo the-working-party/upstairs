@@ -95,6 +95,9 @@
 			text-decoration: none;
 			display: block;
 		}
+		.site-name a:hover {
+			background: none;
+		}
 		[itemprop="logo"] {
 			width: 25vmin;
 			max-width: 35em;
